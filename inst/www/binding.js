@@ -201,6 +201,12 @@
     };
   }
 
+  methods.addCircleDelayed = function(lat, lng, radius, layerId, delay, options) {
+	window.setTimeout( (function(){
+		addCircle(lat, lng, radius, layerId, options);
+	}), delay);
+  };
+
   methods.addCircle = function(lat, lng, radius, layerId, options) {
     lat = vectorize(lat);
     lng = vectorize(lng, lat.length);
@@ -224,6 +230,10 @@
       .setLatLng([lat, lng])
       .setContent(content);
     this.popups.add(popup, layerId);
+  };
+
+  methods.bindPopupToId = function(id, content) {
+	this._layers[id].bindPopup(content);
   };
 
   methods.removePopup = function(layerId) {

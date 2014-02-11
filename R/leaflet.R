@@ -38,6 +38,9 @@ createLeafletMap <- function(session, outputId) {
                             layerId = NULL, options=list()) {
       send('addRectangle', lat1, lng1, lat2, lng2, layerId, options)
     },
+    addCircleDelayed = function(lat, lng, radius, layerId = NULL, delay, options=list()) {
+      send('addCircleDelayed', lat, lng, radius, layerId, delay, options)
+    },
     addCircle = function(lat, lng, radius, layerId = NULL, options=list()) {
       send('addCircle', lat, lng, radius, layerId, options)
     },
@@ -46,6 +49,9 @@ createLeafletMap <- function(session, outputId) {
     },
     showPopup = function(lat, lng, content, layerId = NULL, options=list()) {
       send('showPopup', lat, lng, content, layerId, options)
+    },
+  	bindPopupToId = function(id, content) {
+      send('bindPopupToId', id, content)
     },
     removePopup = function(layerId) {
       send('removePopup', layerId)
