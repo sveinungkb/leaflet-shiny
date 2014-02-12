@@ -39,7 +39,7 @@
           });
         });
         
-        // Fire event to let shiny know map is loaded and ready to be used
+        // Fire event to let shiny know map is loaded and ready to be used 
         setTimeout(function (){
           Shiny.onInputChange(id + '_load', {'.nonce': Math.random()}) 
         }, 1);
