@@ -39,6 +39,11 @@
           });
         });
         
+        // Fire event to let shiny know map is loaded and ready to be used
+        setTimeout(function (){
+          Shiny.onInputChange(id + '_load', {'.nonce': Math.random()}) 
+        }, 1);
+        
         // Send bounds info back to the app
         function updateBounds() {
           var bounds = map.getBounds();
