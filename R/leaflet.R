@@ -41,6 +41,9 @@ createLeafletMap <- function(session, outputId) {
     addCircleDelayed = function(lat, lng, radius, layerId = NULL, delay, options=list()) {
       send('addCircleDelayed', lat, lng, radius, layerId, delay, options)
     },
+    addOrUpdateCircle = function(lat, lng, radius, layerId = NULL, options=list()) {
+      send('addOrUpdateCircle', lat, lng, radius, layerId, options)
+    },
     addCircle = function(lat, lng, radius, layerId = NULL, options=list()) {
       send('addCircle', lat, lng, radius, layerId, options)
     },

@@ -202,9 +202,36 @@
   }
 
   methods.addCircleDelayed = function(lat, lng, radius, layerId, delay, options) {
-	window.setTimeout( (function(){
-		addCircle(lat, lng, radius, layerId, options);
-	}), delay);
+	  window.setTimeout( (function(){
+		  addCircle(lat, lng, radius, layerId, options);
+	  }), delay);
+  };
+  
+  methods.addOrUpdateCircle = function(lat, lng, radius, layerId, options) {
+    lat = vectorize(lat);
+    lng = vectorize(lng, lat.length);
+    radius = vectorize(radius, lat.length);
+    layerId = vectorize(layerId, lat.length);
+    
+    for (var i = 0; i < lat.length; i++) {
+      (function() {
+        var thisId = layerId[i];
+        var circle = this.shapes.get(thisId)
+        var latLng = [lat[i], lng[i]]
+        if (typeof(circle) !== 'undefined' && circle !== null) {
+          console.log('Updating circle for id: ' + thisId);
+          circle.setRadius(radius[i]);
+          circle.setLatLng(latLng);
+        }
+        else {
+          var circle = L.circle(latLng, radius[i], options);  
+          this.shapes.add(circle, thisId);
+          circle.on('click', mouseHandler(this.id, thisId, 'shape_click'), this);
+          circle.on('mouseover', mouseHandler(this.id, thisId, 'shape_mouseover'), this);
+          circle.on('mouseout', mouseHandler(this.id, thisId, 'shape_mouseout'), this);
+        }        
+      }).call(this);
+    }
   };
 
   methods.addCircle = function(lat, lng, radius, layerId, options) {
