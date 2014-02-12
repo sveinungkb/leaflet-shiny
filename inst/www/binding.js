@@ -66,6 +66,9 @@
             attribution: initialTileLayerAttrib
           }).addTo(map);
         }
+        
+        // Fire event to let shiny know map is loaded and ready to be used
+        Shiny.onInputChange(id + '_load');
       }
     }
   });
