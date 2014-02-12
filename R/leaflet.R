@@ -82,11 +82,11 @@ leafletMap <- function(
   tagList(
     singleton(
       tags$head(
-        HTML('<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+        HTML('<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" />
 <![endif]-->
-<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>'),
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>'),
         tags$script(src="leaflet/binding.js")
       )
     ),
